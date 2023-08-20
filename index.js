@@ -29,11 +29,7 @@ app.get('/getTodos', async (req, res) => {
   try {
     const todos = await Todo.find();
 
-    if(todos.length > 0) {
-      res.status(200).json(todos);
-    } else {
-      res.status(404).json({ message: 'No todos found' });
-    }
+    res.status(200).json(todos);
 
   } catch (error) {
     console.log(error);
