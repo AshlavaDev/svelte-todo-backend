@@ -43,12 +43,13 @@ app.get('/getTodos', async (req, res) => {
 
 app.post('/createTodo', async (req, res) => {
   try {
-    const { content, editing, checked } = req.body;
+    const { content, editing, priority, completed } = req.body;
 
     const newTodo = new Todo({
       content,
       editing,
-      checked,
+      priority,
+      completed
     });
 
     const createdTodo = await newTodo.save();
@@ -64,11 +65,11 @@ app.post('/createTodo', async (req, res) => {
 app.put('/updateTodo/:_id', async (req, res) => {
   try {
     const { _id } = req.params;
-    const { content, editing, checked } = req.body;
+    const { content, editing, priority, completed } = req.body;
 
     const updatedTodo = await Todo.findByIdAndUpdate(
       _id,
-      { content, editing, checked },
+      { content, editing, priority, completed },
       { new: true }
     );
 

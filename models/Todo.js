@@ -12,7 +12,12 @@ const TodoSchema = new Schema({
     default: false,
     required: true
   },
-  checked: {
+  priority: {
+    type: Boolean,
+    default: false,
+    required: true
+  },
+  completed: {
     type: Boolean,
     default: false,
     required: true
